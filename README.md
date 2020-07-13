@@ -1,24 +1,4 @@
 # vue-gallery
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+My Vue-gallery developers mode. The build mode u can find here - https://github.com/lethoss/vue-gallery/tree/gh-pages.
+Link to GH Pages - https://lethoss.github.io/vue-gallery/
