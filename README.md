@@ -1,4 +1,24 @@
-# gallery
-New Vue project, trying to work with vur-cli, vue-resource and vue-router
+# vue-gallery
 
-Link to GH Pages - https://lethoss.github.io/vue-gallery/
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
