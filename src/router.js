@@ -6,18 +6,31 @@ Vue.use(Router)
 
 export default new Router ({
   mode: 'history',
+  base: process.env.NODE_ENV === 'production'
+    ? '/vue-gallery/'
+    : '/',
   routes: [
     {
       path: '/',
       component: Home
     },
     {
-      path: '/Gallery',
-      component: () => import('./views/Gallery.vue')
+      path: '/gallery',
+      component: () => import('@/views/Gallery.vue')
     },
     {
-      path: '/About',
-      component: () => import('./views/About.vue')
+      path: '/about',
+      component: () => import('@/views/About.vue'),
+      children: [
+        {
+          path: '/about/contacts',
+          component: () => import('@/views/Contacts.vue')
+        }
+      ]
+    },
+    {
+      path: '*',
+      component: () => import('@/views/Error.vue')
     }
   ]
 })
