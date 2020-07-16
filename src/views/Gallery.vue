@@ -17,8 +17,8 @@
         <button v-if="photo.zoom" class="closeImageButton" @click="closeZoomImage(index)">Close</button>
       </div>
     </div>
-      <input type="text" :placeholder="placeholder" v-model="forSearch">
-      <button class="findTextButton" type="button" @click="getNewImages">Find the images!</button>
+      <input class="form-control form-control-lg" type="text" :placeholder="placeholder" v-model="forSearch">
+      <button class="btn btn-primary" type="button" @click="getNewImages">Find the images!</button>
     </div>
     <Loader v-if="loading" />
   </div>
@@ -29,7 +29,7 @@ import Loader from '@/components/Loader.vue'
 export default {
   http: {
     headers: {
-      Authorization: 'Client-ID 6L6Oame1JTB4nz96pA4O7lHQjzyT4uadHQ1LMzbR1ZM'
+      Authorization: 'Client-ID ' + process.env.VUE_APP_UNSPLASH
     }
   },
   name: 'Gallery',
@@ -103,10 +103,10 @@ export default {
   height: 300px;
   display: flex;
   justify-content: center;
-  align-items: center
+  align-items: center;
 }
 .imageInPhotoItem {
-  max-width: 300px;
+  max-width: 296px;
   max-height: 300px;
 }
 .imageInPhotoItem:hover {
@@ -139,22 +139,16 @@ export default {
   z-index: 2;
 }
 .photoLabel {
+  line-height: 14px;
   max-height: 36px;
   border-top: 1px solid black;
   text-align: center;
   padding: 3px 0 3px 0;
   overflow-y: auto;
 }
-.findTextButton {
-  box-sizing: content-box;
-  width: 100px;
-  height: 40px;
-  margin: 20px 10px 20px 10px;
-}
 input {
-  box-sizing: content-box;
-  width: 300px;
-  height: 40px;
+  width: 400px;
+  display: inline-block;
   margin: 20px 10px 20px 10px;
 }
 .background {

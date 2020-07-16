@@ -1,36 +1,45 @@
 <template>
   <div id="app">
-    <hr>
-    <div>Test Vue Gallery with searching photos</div>
-    <hr>
-    <router-link to="/" exact>Home </router-link>
-    <router-link to="/gallery" exact>Gallery </router-link>
-    <router-link to="/about" exact>About </router-link>
-    <keep-alive>
-      <router-view />
-    </keep-alive>
-      </div>
-    </template>
+      <component :is="layout">
+        <router-view />
+      </component>
+  </div>
+</template>
 
 
-    <script>
-    export default {
-      name: 'App',
-      components: {
-      }
+<script>
+import MainLayout from '@/layouts/MainLayout'
+import AuthLayout from '@/layouts/AuthLayout'
+import firebase from 'firebase/app'
+export default {
+  name: 'App',
+  computed: {
+    layout() {
+      return (this.$route.meta.layout || 'auth') + '-layout'
     }
-    </script>
+  },
+  components: {
+    MainLayout, AuthLayout
+  },
+  methods: {
+    getUid() {
+      const user = firebase.auth().currentUser
+      return user ? user.uid : null
+    },
+  }
+}
+</script>
 
 
-    <style>
-    #app {
-      font-family: Avenir, Helvetica, Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      text-align: center;
-      color: #2c3e50;
-    }
-    .router-link-active {
-      color: red;
-    }
-    </style>
+<style>
+@import '~bootstrap/dist/css/bootstrap.min.css';
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+}
+.router-link-active {
+  color: red !important;
+}
+</style>
